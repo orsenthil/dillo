@@ -1,21 +1,18 @@
-===================
  Dillo web browser
-===================
+==================
 
 Dillo is a multi-platform graphical web browser, known for its
 speed and small footprint, that is developed with a focus on
 personal security and privacy.
 
-The dillo3 series uses version 1.3.x of the FLTK GUI toolkit
-(http://fltk.org).
+The dillo3 series uses version 1.3.x of the [FLTK GUI toolkit](http://fltk.org).
 
 The core team currently plans to focus on implementing the CSS
 feature of floating elements.  This will greatly improve
 dillo's web page rendering since many sites have adopted floats
-instead of tables. 
+instead of tables.
 
-The core team welcomes developers willing to join our workforce. 
-
+The core team welcomes developers willing to join our workforce.
 
 NOTE:  With  FLTK-1.3,  when  running  on X with Xft enabled (the
 default),  font naming is more restricted than it was with FLTK2
@@ -23,12 +20,10 @@ as used by dillo2.  If your font_* preferences are no longer
 working well, please try the fc-list command as it is shown in
 dillorc.
 
+Here's a list of some old well-known problems of dillo:
 
-  Here's a list of some old well-known problems of dillo:
-
-         * no FRAMES rendering
-         * https code not yet fully trusted
-           (enable it with: ./configure --enable-ssl ).
+* no FRAMES rendering
+* https code not yet fully trusted (enable it with: ./configure --enable-ssl ).
 
 
 --------
@@ -87,6 +82,37 @@ and note that you'll need GNU make.
     ./configure --disable-threaded-dns
 
   so dillo uses a single thread for name resolving.
+
+
+Mac
+---
+
+Instructions by Senthil. Tested on Mac 10.13.6, on Oct 2018.
+
+
+* Install fltk
+
+```
+brew install fltk
+```
+
+```
+git clone https://github.com/orsenthil/dillo
+git checkout 3.0.5
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+./configure --enable-ssl
+make
+sudo make install-strip
+```
+
+dillo program is now installed and can be used for both http and https websites.
+
+```
+dillo &
+```
+
+
 
 
 -------
